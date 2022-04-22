@@ -1,7 +1,8 @@
 # intein_crawl
 Walk through MSFASTA of intein-containing entries with consistent identifying Nterm and Cterm boundary characters to yield intein-only and extein-only output files with original input file order conserved.
 
-**version 0.0 April 22, 2022**
+**version 0.0 April 22, 2022** 
+
 This preliminary version is only designed to handle entries with **single** insertions. I am working on a second version that can handle situations such as genes invaded by multiple inteins, stay tuned :)
 
 
