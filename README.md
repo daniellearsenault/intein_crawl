@@ -38,7 +38,10 @@ Once all entries have been sorted through, the intein-only and extein-only files
 
 Save these two files in a working directory, and use python intein_crawl.py to run, prompts will guide from there. 
 
-**NOTE:** The N-terminal marker for the test data is **CL** , and the C-terminal marker for the test data is **TGN.** Enter these characters when prompted for N-term and C-term characters. 
+**NOTE:** The N-terminal marker for the test data is **CL** , and the C-terminal marker for the test data is **TGN.** Enter these characters when prompted for N-term and C-term characters.  
+
+<img width="680" alt="image" src="https://user-images.githubusercontent.com/56440050/164783586-c22ef902-fe7a-4ab3-8dda-f9802ce0305a.png">
+
 
 
 
