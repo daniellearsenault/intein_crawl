@@ -30,11 +30,16 @@ Once all entries have been sorted through, the intein-only and extein-only files
 ![image](https://user-images.githubusercontent.com/56440050/164782138-cc75fc50-9665-4a8b-bc86-c4b1a1b46c4a.png)
 
 
-**Provided testing materials:**
-**intein_crawl.py** - script
-**test_ints_and_exts.fst** - input file
-Save these two files in a working directory, and use python intein_crawl.py to run, prompts will guide from there.
-**NOTE:** The N-terminal marker for the test data is **CL** , and the C-terminal marker for the test data is **TGN.** Enter these characters when prompted for N-term and C-term characters.
+**Provided testing materials:** 
+
+**intein_crawl.py** - script 
+
+**test_ints_and_exts.fst** - input file 
+
+Save these two files in a working directory, and use python intein_crawl.py to run, prompts will guide from there. 
+
+**NOTE:** The N-terminal marker for the test data is **CL** , and the C-terminal marker for the test data is **TGN.** Enter these characters when prompted for N-term and C-term characters. 
+
 
 
 p.s.
