@@ -1,7 +1,7 @@
 # intein_crawl
 Walk through input MSFASTA of intein-containing entries with consistent identifying Nterm and Cterm characters to yield intein-only and extein-only output files with original input file order conserved.
 
-**INPUT:** MSFASTA file (prot. ideally) of entries that contain nested elements, such as inteins.
+**INPUT:** MSFASTA file (prot. ideally) of entries that contain a nested element, such as an intein.
 **OUTPUT:** 2 MSFASTA files: an edited internal/interrupting element-only set of input entries with original order retained (**ex. intein only**), and an edited external/host element-only set of input entries with original order retained (**ex. extein only**)
 
 **HOW TO USE:** Save script and input file in one directory, and set as working directory in terminal/terminal-equivalent. Use the command python intein-crawl.py to begin. The user will be greeted with different prompts and walked through the process.
@@ -35,3 +35,5 @@ p.s.
 Script will be most efficient on **protein-level** sequence data.
 p.p.s
 This script can be used for any multi-entry file with '>' annotation deliniations above each entry (ex. FASTA format) where each entry contains a nested element with relatively consistent characters at the N and C terminals, though the verbeage is intein-centric as that was the original purpose of the script. If using for non intein purposes, consider the intein-extein analog features in your data set: intein = the nested element with identifiers; extein = the host element surrounding the nested element.
+p.p.p.s. if thats a thing:
+version 0.0 (April 22, 2022) is designed for use on single-intein entries (1 intein/interrupting element per entry). Currently working on a new version that can handle **multiply** invaded entries, which may take me some time to work out :)
