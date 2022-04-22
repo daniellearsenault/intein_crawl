@@ -1,2 +1,29 @@
 # intein_crawl
 Walk through input MSFASTA of intein-containing entries with consistent identifying Nterm and Cterm characters to yield intein-only and extein-only output files with original input file order conserved.
+
+**INPUT:** MSFASTA file (prot. ideally) of entries that contain nested elements, such as inteins.
+**OUTPUT:** 2 MSFASTA files: an edited internal/interrupting element-only set of input entries with original order retained (**ex. intein only**), and an edited external/host element-only set of input entries with original order retained (**ex. extein only**)
+
+**HOW TO USE:** Save script and input file in one directory, and set as working directory in terminal/terminal-equivalent. Use the command python intein-crawl.py to begin. The user will be greeted with different prompts and walked through the process.
+
+**Flow:**
+1) Use command python intein_crawl.py to begin.
+<img width="1052" alt="image" src="https://user-images.githubusercontent.com/56440050/164769548-819e8dff-41a7-4d3a-8c3f-ba642f8c3e8d.png">
+2) The user will be prompted for the name of their input file (ex. **test_ints_and_exts.fst**), what they would like to name their output files (**ex. test_inteins_only.fst and test_extein_only.fst**), and the characters that appear at the N-terminal and C-terminal ends of their intein (**ex. if the intein being searched for typically follows a 'CL[...]TGN' sequence structure, 'CL' would designate the N-terminal and 'TGN' would designate the C-terminal**).  
+<img width="1051" alt="image" src="https://user-images.githubusercontent.com/56440050/164770371-81e42a43-311e-4cf6-bb0f-e03eb77038f2.png">
+3) The user will then be walked through each entry of their input file, will be presented with the (line,index) pair of each N-term marker and C-term marker found in the entry, and will ask the user to identify the correct boundaries to splice the entry at. The full entry will be shown to the user with each round as well, so they may see where the provided hits fall in the full entry to better inform bound selection. If the bounds are unclear, simply submit -1 when prompted for the bounds, and the full original entry will be appended to both the intein and extein output files for the user to manually inspect afterwards. 
+<img width="793" alt="image" src="https://user-images.githubusercontent.com/56440050/164770780-4b0de523-1c53-47c0-9cb7-160f256f9c84.png">
+4) Since this script will likely be used on larger data sets, the user may terminate the run at any point, and any entries the user has already sorted through will be stored in appropriate log files. The next time the script is run a directory with the input and log files present, the run will pick back up at the entry the user left off at after the previous run. At the beginning of a secondary run, the user will be asked if they would like to keep the names of the output files they originally submitted, or if they would like to change them.   
+Once all entries have been sorted through, the intein-only and extein-only files will be generated and saved in the working directory.
+
+**Provided testing materials:**
+**intein_crawl.py** - script
+**test_ints_and_exts.fst** - input file
+Save these two files in a working directory, and use python intein_crawl.py to run, prompts will guide from there.
+**NOTE:** The N-terminal marker for the test data is **CL** , and the C-terminal marker for the test data is **TGN.** Enter these characters when prompted for N-term and C-term characters.
+
+
+p.s.
+Script will be most efficient on **protein-level** sequence data.
+p.p.s
+This script can be used for any multi-entry file with '>' annotation deliniations above each entry (ex. FASTA format) where each entry contains a nested element with relatively consistent characters at the N and C terminals, though the verbeage is intein-centric as that was the original purpose of the script. If using for non intein purposes, consider the intein-extein analog features in your data set: intein = the nested element with identifiers; extein = the host element surrounding the nested element.
