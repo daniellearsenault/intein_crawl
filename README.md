@@ -1,5 +1,5 @@
 # intein_crawl
-Walk through input MSFASTA of intein-containing entries with consistent identifying Nterm and Cterm characters to yield intein-only and extein-only output files with original input file order conserved.
+Walk through MSFASTA of intein-containing entries with consistent identifying Nterm and Cterm boundary characters to yield intein-only and extein-only output files with original input file order conserved.
 
 **INPUT:** MSFASTA file (prot. ideally) of entries that contain a nested element, such as an intein.
 **OUTPUT:** 2 MSFASTA files: an edited internal/interrupting element-only set of input entries with original order retained (**ex. intein only**), and an edited external/host element-only set of input entries with original order retained (**ex. extein only**)
