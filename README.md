@@ -12,9 +12,17 @@ Walk through input MSFASTA of intein-containing entries with consistent identify
 2) The user will be prompted for the name of their input file (ex. **test_ints_and_exts.fst**), what they would like to name their output files (**ex. test_inteins_only.fst and test_extein_only.fst**), and the characters that appear at the N-terminal and C-terminal ends of their intein (**ex. if the intein being searched for typically follows a 'CL[...]TGN' sequence structure, 'CL' would designate the N-terminal and 'TGN' would designate the C-terminal**).  
 <img width="1051" alt="image" src="https://user-images.githubusercontent.com/56440050/164770371-81e42a43-311e-4cf6-bb0f-e03eb77038f2.png">
 3) The user will then be walked through each entry of their input file, will be presented with the (line,index) pair of each N-term marker and C-term marker found in the entry, and will ask the user to identify the correct boundaries to splice the entry at. The full entry will be shown to the user with each round as well, so they may see where the provided hits fall in the full entry to better inform bound selection. If the bounds are unclear, simply submit -1 when prompted for the bounds, and the full original entry will be appended to both the intein and extein output files for the user to manually inspect afterwards. 
-<img width="793" alt="image" src="https://user-images.githubusercontent.com/56440050/164770780-4b0de523-1c53-47c0-9cb7-160f256f9c84.png">
+3a) Clear bounds:
+![image](https://user-images.githubusercontent.com/56440050/164780984-59ec636c-bd48-4eb0-bcb1-66abe9cc3c5e.png)
+3b) Unclear bounds:
+![image](https://user-images.githubusercontent.com/56440050/164781204-b7882886-43aa-4f08-a7a6-59b71975257e.png)
 4) Since this script will likely be used on larger data sets, the user may terminate the run at any point, and any entries the user has already sorted through will be stored in appropriate log files. The next time the script is run a directory with the input and log files present, the run will pick back up at the entry the user left off at after the previous run. At the beginning of a secondary run, the user will be asked if they would like to keep the names of the output files they originally submitted, or if they would like to change them.   
 Once all entries have been sorted through, the intein-only and extein-only files will be generated and saved in the working directory.
+4a) Beginning of second run on same input:
+![image](https://user-images.githubusercontent.com/56440050/164781840-2cf9679a-d068-4091-988b-b4e3f495dbe1.png)
+4b) Second run starts where previous run left off:
+![image](https://user-images.githubusercontent.com/56440050/164782138-cc75fc50-9665-4a8b-bc86-c4b1a1b46c4a.png)
+
 
 **Provided testing materials:**
 **intein_crawl.py** - script
