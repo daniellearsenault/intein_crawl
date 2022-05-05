@@ -169,11 +169,11 @@ while i < len(entries):
     #obtain intein bounds from user
     print('Use the following prompts to choose where you would like to place the correct intein boundary markers:\n')
     print('\n')
-    N_line = int(raw_input("What is the LINE of the GOOD N-term marker? ex. 6 -- Type -1 if None were retrieved.\n"))
-    N_index = int(raw_input("What is the INDEX within this line of the GOOD N-term marker? ex. 22 -- Type -1 if None were retrieved\n"))
+    N_line = int(raw_input("What is the LINE of the GOOD N-term marker? ex. 6 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
+    N_index = int(raw_input("What is the INDEX within this line of the GOOD N-term marker? ex. 22 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
     print('\n')
-    C_line = int(raw_input("What is the LINE of the GOOD C-term marker? ex. 6 -- Type -1 if None were retrieved.\n"))
-    C_index = int(raw_input("What is the INDEX within this line of the GOOD C-term marker? ex. 22 -- Type -1 if None were retrieved\n"))
+    C_line = int(raw_input("What is the LINE of the GOOD C-term marker? ex. 6 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
+    C_index = int(raw_input("What is the INDEX within this line of the GOOD C-term marker? ex. 22 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
     #if bounds are unclear append entire entry to both logs
     if N_line==-1 or N_index==-1 or C_line==-1 or C_index==-1:
         print("Incomplete or no bounds provided. Adding full entry to both intein and extein files for manual editing by user.")
@@ -187,7 +187,7 @@ while i < len(entries):
         I_log.close()
         E_log.close()
     #if bounds are clear, append appropriate edited entries to both logs
-    if N_line!=-1 and N_index!=-1 and C_line!=-1 and C_index!=-1:
+    if N_line>-1 and N_index>-1 and C_line>-1 and C_index>-1 :
         two_coords(N_line,N_index,C_line,C_index,entry)
 
     i+=1
@@ -218,3 +218,4 @@ print('')
 print('Thank you for using the intein_crawl script.')
 print('Enjoy your files :)')
 print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*')
+
