@@ -1,5 +1,9 @@
 import os
 cwd=os.getcwd()
+print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*')
+print('Welcome to Intein Crawl version 0.1!)
+print('(Last updated May 5, 2022)')
+print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*')
 #input = 'intein_crawl_TEST_input.fst'
 input = raw_input('Input FASTA filename:\n')
 Iout=''
