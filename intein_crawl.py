@@ -106,26 +106,44 @@ def two_coords(N_line,N_index,C_line,C_index,entry):
 
     C_index+=(len(Cterm)-1)
     #cut entry and append to intein and extein logs
+
+    #add annotation lines to both
     I_log.write(str(entry[0]))
     E_log.write(str(entry[0]))
-    int_range = [x for x in range(N_line,C_line+1)]
-    if N_line!=0:
-        for n in range(1,N_line):
-            E_log.write(str(entry[n]))
-    E_log.write(str(entry[N_line][:N_index]))
-    I_log.write(str(entry[N_line][N_index:]))
-    for n in range(int_range[1],int_range[-1]):
-        I_log.write(str(entry[n]))
-    I_log.write(str(entry[C_line][:C_index+1]))
-    E_log.write(str(entry[C_line][C_index+1:]))
-    if C_line!=len(entry)-1:
-        for n in range(int_range[-1]+1,len(entry)):
-            E_log.write(str(entry[n]))
+
+    #if the entire intein is on one line
+    if N_line==C_line:
+        E_log.write(entry[1:N_line])
+        E_log.write(entry[N_line][:N_index])
+        I_log.write(entry[N_line][N_index:C_index+1])
+        if C_index!=len(entry[C_line])-1:
+            E_log.write(entry[C_line][C_index+1:])
+
+    #if the intein spans multiple lines
+    if N_line!=C_line:
+        #if the intein does not start on the first line:
+        if N_line!=1:
+            for x in range(1, N_line):
+                E_log.write(entry[x])
+
+        E_log.write(entry[N_line][:N_index])
+        I_log.write(entry[N_line][N_index:])
+        #if the intein spans more than two lines
+        if C_line-N_line>1:
+            for x in range(N_line+1,C_line):
+                I_log.write(entry[x])
+        I_log.write(entry[C_line][:C_index+1])
+        #if the intein stops in the middle of the line
+        if C_index<len(entry[C_line])-1:
+            E_log.write(entry[C_line][C_index+1:])
+        #if the intein does not end on the last line
+        if C_line!=len(entry)-1:
+            for x in range(C_line+1,len(entry)):
+                E_log.write(entry[x])
 
     I_log.write('\n')
     I_log.close()
 
-    E_log.write('\n')
     E_log.close()
 
 def get_hits(line,term,line_index):
@@ -195,6 +213,8 @@ while i < len(entries):
     #if bounds are clear, append appropriate edited entries to both logs
     if N_line>-1 and N_index>-1 and C_line>-1 and C_index>-1 :
         two_coords(N_line,N_index,C_line,C_index,entry)
+
+
 
     i+=1
 
