@@ -173,11 +173,11 @@ while i < len(entries):
     #obtain intein bounds from user
     print('Use the following prompts to choose where you would like to place the correct intein boundary markers:\n')
     print('\n')
-    N_line = int(raw_input("What is the LINE of the GOOD N-term marker? ex. 6 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
-    N_index = int(raw_input("What is the INDEX within this line of the GOOD N-term marker? ex. 22 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
+    N_line = int(raw_input("What is the LINE of the GOOD N-term marker? ex. 6 \nType -1 if None were retrieved to append FULL entry to both output files. \nType -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
+    N_index = int(raw_input("What is the INDEX within this line of the GOOD N-term marker? ex. 22\nType -1 if None were retrieved to append FULL entry to both output files. \nType -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
     print('\n')
-    C_line = int(raw_input("What is the LINE of the GOOD C-term marker? ex. 6 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
-    C_index = int(raw_input("What is the INDEX within this line of the GOOD C-term marker? ex. 22 -- Type -1 if None were retrieved to append FULL entry to both output files. Type -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
+    C_line = int(raw_input("What is the LINE of the GOOD C-term marker? ex. 6 \nType -1 if None were retrieved to append FULL entry to both output files. \nType -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
+    C_index = int(raw_input("What is the INDEX within this line of the GOOD C-term marker? ex. 22 \nType -1 if None were retrieved to append FULL entry to both output files. \nType -2 if you want to REMOVE this entry from your set (will remain in original input file, will not be added to output files.)\n"))
     #if bounds are unclear append entire entry to both logs
     if N_line==-1 or N_index==-1 or C_line==-1 or C_index==-1:
         print("Incomplete or no bounds provided. Adding full entry to both intein and extein files for manual editing by user.")
@@ -190,6 +190,8 @@ while i < len(entries):
         E_log.write('\n')
         I_log.close()
         E_log.close()
+    if N_line==-2 or N_index==-2 or C_line==-2 or C_index==-2:
+        print("Entry will not be added to output files.")
     #if bounds are clear, append appropriate edited entries to both logs
     if N_line>-1 and N_index>-1 and C_line>-1 and C_index>-1 :
         two_coords(N_line,N_index,C_line,C_index,entry)
@@ -223,3 +225,95 @@ print('Thank you for using the intein_crawl script.')
 print('Enjoy your files :)')
 print('*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**~*~*~*~*')
 
+
+
+
+#
+#
+# for entry in entries:
+#     print("***** ENTRY: *****")
+#     for l in entry:
+#         print('line:'+str(entry.index(l))+l)
+#     CL = []
+#     TGN = []
+#     for line in entry:
+#         if entry.index(line) != 0:
+#             temp=line
+#             while 'CL' in temp:
+#                 i = line.find('CL')
+#                 pair = ['line:',entry.index(line),'index:',i,temp[i:i+6]]
+#                 CL.append(pair)
+#                 temp=line[i+1:]
+#         if entry.index(line) != 0:
+#             temp=line
+#             while 'TGN' in temp:
+#                 i = line.find('TGN')
+#                 pair = ['line:',entry.index(line),'index:',i,temp[i:i+7]]
+#                 TGN.append(pair)
+#                 temp=line[i+1:]
+#     if len(CL)!=0:
+#         print('CL was found at the following indices:')
+#         for cls in CL:
+#             print(cls)
+#     if len(CL)==0:
+#         print('CL was not found, adding entry to list to manually check')
+#         int_manual.append([entries.index(entry),entry])
+#         int_ordered.append([entries.index(entry),entry])
+#     if len(TGN)!=0:
+#         print('TGN was found at the following indices:')
+#         for tgns in TGN:
+#             print(tgns)
+#     if len(TGN)==0:
+#         print('TGN was not found')
+#         if len(CL)!=0:
+#             int_manual.append([entries.index(entry),entry])
+#             int_ordered.append([entries.index(entry),entry])
+#
+#     good_CL_LINE = int(raw_input("What is the line of the GOOD CL? ex. 4 -- Type -1 if None were retrieved"))
+#     good_CL_INDEX = int(raw_input("What is the index within this line of the GOOD CL? ex. 16 -- Type -1 if None were retrieved"))
+#     good_TGN_LINE = int(raw_input("What is the line of the GOOD TGN? ex. 4 -- Type -1 if None were retrieved"))
+#     good_TGN_INDEX = int(raw_input("What is the index within this line of the GOOD TGN? ex. 4 -- Type -1 if None were retrieved"))
+#
+#     if good_CL_LINE == -1:
+#         print("There is no good CL.")
+#         print("Adding to manual")
+#         if [entries.index(entry),entry] not in int_manual:
+#             int_manual.append([entries.index(entry),entry])
+#         if [entries.index(entry),entry] not in int_ordered:
+#             int_ordered.append([entries.index(entry),entry])
+#     if good_TGN_LINE == -1:
+#         print("There is no good TGN.")
+#         if good_CL_LINE != -1:
+#             print('Adding to manual')
+#             if [entries.index(entry),entry] not in int_manual:
+#                 int_manual.append([entries.index(entry),entry])
+#             if [entries.index(entry),entry] not in int_ordered:
+#                 int_ordered.append([entries.index(entry),entry])
+#
+#     if (good_CL_LINE!=-1) and (good_TGN_LINE!=-1):
+#         hold = [entry[0]]
+#         i = 1
+#         while i < len(entry):
+#             line = entry[i]
+#             if i!= good_CL_LINE and i != good_TGN_LINE:
+#                 hold.append(line)
+#                 i+=1
+#             if i==good_CL_LINE:
+#                 temp=line[good_CL_INDEX:]
+#                 hold.append(temp)
+#                 i+=1
+#             if i==good_TGN_LINE:
+#                 temp=line[:good_TGN_INDEX+3]
+#                 hold.append(temp)
+#                 i=len(entry)
+#         entry_index = entries.index(entry)
+#         ordered.append([entry_index,hold])
+#
+# for elem in ordered:
+#     print('$$'+elem[0])
+#     cat = ''
+#     entry = elem[1]
+#     for line in entry:
+#         cat+=line
+#         cat+='\n'
+#     print(cat)
