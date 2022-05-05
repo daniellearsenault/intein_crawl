@@ -1,7 +1,9 @@
 # intein_crawl
 **Overview:** Walk through MSFASTA of intein-containing entries with consistent identifying Nterm and Cterm boundary characters to yield intein-only and extein-only output files with original input file order conserved.
 
-**version 0.0 April 22, 2022**: This preliminary version is only designed to handle entries with **single** insertions. I am working on a second version that can handle situations such as genes invaded by multiple inteins, stay tuned :)
+**version 0.0 April 22, 2022**: This preliminary version is only designed to handle entries with **single** insertions. I am working on a second version that can handle situations such as genes invaded by multiple inteins, stay tuned :). 
+
+**version 0.1 May 5, 2022**: Added option to omit unwanted entry from final files.
 
 
 **INPUT:** MSFASTA file (prot. ideally) of entries that contain a nested element, such as an intein. The element must have a set of ~2-4 identifying characters for both the N-terminal and C-terminal that appear in the majority of the instances of the element. (ex. an intein that nearly always starts with 'CL' and ends with 'TGN')
